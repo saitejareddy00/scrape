@@ -42,9 +42,10 @@ def extract_record(item):
     return [name,price,rating,rc,url]
 def finalfunc(search):
     chrome_options=webdriver.ChromeOptions()
+    chrome_options.binary_location = GOOGLE_CHROME_BIN
     chrome_options.add_argument('headless')
     #driver = webdriver.Chrome('chromedriver', chrome_options=chrome_options)
-    driver = webdriver.Chrome(executable_path='chromedriver.exe',chrome_options=chrome_options)
+    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH,chrome_options=chrome_options)
     
     ide_ra=[]
     url=get_url(search)

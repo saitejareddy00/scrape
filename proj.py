@@ -44,6 +44,8 @@ def finalfunc(search):
     chrome_options=webdriver.ChromeOptions()
     chrome_options.binary_location = '/app/.apt/usr/bin/google-chrome'
     chrome_options.add_argument('headless')
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--no-sandbox')
     #driver = webdriver.Chrome('chromedriver', chrome_options=chrome_options)
     driver = webdriver.Chrome(executable_path='/app/.chromedriver/bin/chromedriver',chrome_options=chrome_options)
     
@@ -54,6 +56,7 @@ def finalfunc(search):
     driver.get(url.format(1))
     soup=BeautifulSoup(driver.page_source,'html.parser')
     results=soup.find_all('div',{'data-component-type':'s-search-result'})
+    st.write(len(results))
     for i in range(5):
         ide_ra.append(extract_record(results[i]))
     n=[]
